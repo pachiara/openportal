@@ -1,0 +1,8 @@
+<%= form_tag(search_path, :method => "get", :class => "navbar-form navbar-right") do %>
+    <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="<%= t('common.search') %>...">
+        <div class="input-group-btn">
+            <button type="submit" class="btn-floating btn-large waves-effect waves-light green  "><i class="mdi-action-search"></i></button>
+        </div>
+    </div>
+<% end %>

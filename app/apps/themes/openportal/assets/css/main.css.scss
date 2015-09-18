@@ -1,0 +1,158 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require bootstrap.min.css
+ */
+@import "materialize";
+
+#footer { 
+  background-color: #003354; 
+  padding-bottom: 50px; 
+  padding-top: 50px; 
+}
+#footer p { 
+  color: white; 
+}
+#footer a { 
+  color: white; 
+}
+#footer h5 { 
+  color: white; 
+  padding-bottom: 20px; 
+  text-transform: uppercase; 
+}
+#nav_bar {
+  background-color: #ffffff;
+  border-color: #348D45;
+  border-width: 20px 0 0;
+  border-style: solid;
+  margin-bottom: 0;
+  line-height: 1;
+  min-height: 45px;
+}
+.nav_bar_title {
+  font-size: 1.6em;
+  font-weight: 500;
+  margin-bottom: -100px;
+  margin-top: 0;
+  margin-left: 110px;
+  margin-right: 10px;
+}
+@media only screen and (max-width: 857px) {
+  .nav_bar_menu {
+    margin-top: 100px;
+  }
+}
+@media (min-width: 768px) {
+  .navbar-nav > li > a {
+    padding-top: 25px;
+    padding-bottom: 15px;
+  }
+}
+.navbar-default .navbar-nav > li > a {
+  color: #348D45;
+  font-size: 1em;
+  font-weight: 400;
+}
+@media (min-width: 768px) {
+  .nav_bar_search {
+    margin-top: 35px;
+  }
+}  
+.logo {
+  display: block;
+  margin-bottom: -110px; 
+  padding-top: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.icon_comment {
+  max-width: 48px;
+  border-radius: 50%
+}
+/* Bootstrap override */
+.navbar-form {
+  margin-top: 0;
+  margin-bottom: 0;
+}    
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+nav ul a,
+nav .brand-logo {
+  color: #444;
+}
+p {
+  line-height: 2rem;
+}
+.button-collapse {
+  color: #26a69a;
+}
+.parallax-container {
+  min-height: 480px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+.parallax-container .section {
+    width: 100%;
+}
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+.green {
+  background-color: #348D45 !important;
+}
+.green-text {
+  color: #348D45 !important;
+}
+h6 {
+  font-size: 1.4rem;
+}
+body {
+  font-family: roboto;
+  font-size: 1.2em;
+  color: #777;  
+}
+a {
+  color: #348D45;
+}
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 85%; 
+  }
+}
+.container {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 90%;
+}

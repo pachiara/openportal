@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <!-- META SECTION -->
+    <title>OpenPortal</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- END META SECTION -->
+    <%= stylesheet_link_tag theme_asset_path("css/main.css") %>
+    <%= javascript_include_tag theme_asset_path("js/main.js") %>
+    <%= raw the_head %>
+  </head>
+  
+  <body class="avoid-fout">
+    <!-- container -->
+    <div class="row">
+    <%= render "layouts/header" %>
+    <!--   Home Section   -->
+    <% if is_home? %>
+      <%= render "home/banner1" %>
+      <%= render "home/icon_section" %>
+      <h2 class="center green-text"><i class="large mdi-image-tag-faces"></i></h2>
+    <% end %>
+    <!--   end Home Section   -->
+
+    <!-- wrapper-->
+    <div id="wrapper" class="clearfix">
+        <div class="home-wrap clearfix">
+            <% if is_home? %>
+                <%= yield %>
+            <% else %>
+                <div id="ww">
+                    <div class="container"><%= yield %></div>
+                </div>
+            <% end %>
+        </div><!-- END home-wrap -->
+    </div><!-- end of wrapper-->
+
+    <%= render "home/banner2" %>
+
+    <div class="container">
+      <div class="section">
+        <div class="row">
+          <div class="center">
+            <h3><i class="large mdi-content-send green-text"></i></h3>
+            <h4>Contact Us</h4>
+            <div class="col s12 offset-m3 m6 z-depth-1">
+            <p class="right-align"><img src="/assets/themes/openportal/assets/images/lispa.gif" alt="Lombardia Informatica"></p>	
+            <p class="left-align light">
+             Lombardia Informatica S.p.A<br />
+             Via T.Taramelli, 26 20124 MILANO,ITALY<br />
+             Tel 02 39331.1 - Fax 02 39331.250<br />
+             mail: info@lispa.it<br /></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%= render "home/banner3" %>
+    <%= render "layouts/footer" %>
+    </div><!-- ./container -->
+  </body>
+</html>

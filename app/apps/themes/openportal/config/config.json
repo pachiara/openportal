@@ -1,0 +1,14 @@
+{
+  "name" : "Openportal",
+  "description" : "Tema Per OpenPortal LISPA v.1.0 (folder = openportal)",
+  "thumb" : "images/openportal.png",
+  "helpers": [
+    "Themes::Openportal::MainHelper"
+  ],
+  "hooks": {
+    "on_active": ["openportal_on_install_theme"],
+    "on_inactive": ["openportal_on_uninstall_theme"],
+    "on_theme_settings": ["openportal_settings"]
+    //here all your hooks
+  }
+}

@@ -46,7 +46,7 @@ group :development do
 end
 # CMS
 gem 'camaleon_cms'
-
+gem 'thin'
 
 #################### Camaleon CMS include all gems for plugins and themes #################### 
 require './lib/plugin_routes' 
