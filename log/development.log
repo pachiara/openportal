@@ -1,0 +1,115 @@
+Mysql2::Error: Table 'openportal_development.term_taxonomy' doesn't exist: SHOW FULL FIELDS FROM `term_taxonomy`
+Mysql2::Error: Table 'openportal_development.term_taxonomy' doesn't exist: SHOW FULL FIELDS FROM `term_taxonomy`
+  [1m[36m (86.5ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (264.5ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) 
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to PostTableIntoUtf8 (20150611161134)
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from measure at /Users/pachi/.rbenv/versions/2.2.3/lib/ruby/2.2.0/benchmark.rb:288)
+  [1m[35m (162.5ms)[0m  CREATE TABLE `users` (`id` int(11) auto_increment PRIMARY KEY, `username` varchar(255), `role` varchar(255) DEFAULT 'client', `email` varchar(255), `slug` varchar(255), `password_digest` varchar(255), `auth_token` varchar(255), `password_reset_token` varchar(255), `parent_id` int(11), `password_reset_sent_at` datetime, `last_login_at` datetime, `created_at` datetime, `updated_at` datetime, `site_id` int(11) DEFAULT -1,  INDEX `index_users_on_username`  (`username`) ,  INDEX `index_users_on_role`  (`role`) ,  INDEX `index_users_on_email`  (`email`) ,  INDEX `index_users_on_site_id`  (`site_id`) ) ENGINE=InnoDB
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from measure at /Users/pachi/.rbenv/versions/2.2.3/lib/ruby/2.2.0/benchmark.rb:288)
+  [1m[36m (155.3ms)[0m  [1mCREATE TABLE `term_taxonomy` (`id` int(11) auto_increment PRIMARY KEY, `taxonomy` varchar(255), `description` longtext, `parent_id` int(11), `count` int(11), `name` varchar(255), `slug` varchar(255), `term_group` int(11), `term_order` int(11), `status` varchar(255), `created_at` datetime, `updated_at` datetime, `user_id` int(11),  INDEX `index_term_taxonomy_on_taxonomy`  (`taxonomy`) ,  INDEX `index_term_taxonomy_on_parent_id`  (`parent_id`) ,  INDEX `index_term_taxonomy_on_slug`  (`slug`) ,  INDEX `index_term_taxonomy_on_term_order`  (`term_order`) ,  INDEX `index_term_taxonomy_on_user_id`  (`user_id`) ) ENGINE=InnoDB[0m
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from measure at /Users/pachi/.rbenv/versions/2.2.3/lib/ruby/2.2.0/benchmark.rb:288)
+  [1m[35m (116.5ms)[0m  CREATE TABLE `posts` (`id` int(11) auto_increment PRIMARY KEY, `title` varchar(255), `slug` varchar(255), `content` longtext, `content_filtered` longtext, `status` varchar(255) DEFAULT 'published', `comment_count` int(11) DEFAULT 0, `published_at` datetime, `post_parent` int(11), `visibility` varchar(255) DEFAULT 'public', `visibility_value` text, `post_class` varchar(255) DEFAULT 'Post', `created_at` datetime, `updated_at` datetime, `user_id` int(11),  INDEX `index_posts_on_slug`  (`slug`) ,  INDEX `index_posts_on_status`  (`status`) ,  INDEX `index_posts_on_post_parent`  (`post_parent`) ,  INDEX `index_posts_on_post_class`  (`post_class`) ,  INDEX `index_posts_on_user_id`  (`user_id`) ) ENGINE=InnoDB
+  [1m[36m (108.4ms)[0m  [1mCREATE TABLE `term_relationships` (`id` int(11) auto_increment PRIMARY KEY, `objectid` int(11), `term_order` int(11), `term_taxonomy_id` int(11),  INDEX `index_term_relationships_on_objectid`  (`objectid`) ,  INDEX `index_term_relationships_on_term_order`  (`term_order`) ,  INDEX `index_term_relationships_on_term_taxonomy_id`  (`term_taxonomy_id`) ) ENGINE=InnoDB[0m
+  [1m[35m (129.1ms)[0m  CREATE TABLE `user_relationships` (`id` int(11) auto_increment PRIMARY KEY, `term_order` int(11), `active` int(11) DEFAULT 1, `term_taxonomy_id` int(11), `user_id` int(11),  INDEX `index_user_relationships_on_term_taxonomy_id`  (`term_taxonomy_id`) ,  INDEX `index_user_relationships_on_user_id`  (`user_id`) ) ENGINE=InnoDB
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from measure at /Users/pachi/.rbenv/versions/2.2.3/lib/ruby/2.2.0/benchmark.rb:288)
+  [1m[36m (119.4ms)[0m  [1mCREATE TABLE `comments` (`id` int(11) auto_increment PRIMARY KEY, `author` varchar(255), `author_email` varchar(255), `author_url` varchar(255), `author_IP` varchar(255), `content` text, `approved` varchar(255) DEFAULT 'pending', `agent` varchar(255), `typee` varchar(255), `comment_parent` int(11), `post_id` int(11), `user_id` int(11), `created_at` datetime, `updated_at` datetime,  INDEX `index_comments_on_approved`  (`approved`) ,  INDEX `index_comments_on_comment_parent`  (`comment_parent`) ,  INDEX `index_comments_on_post_id`  (`post_id`) ,  INDEX `index_comments_on_user_id`  (`user_id`) ) ENGINE=InnoDB[0m
+  [1m[35m (140.3ms)[0m  CREATE TABLE `custom_fields` (`id` int(11) auto_increment PRIMARY KEY, `object_class` varchar(255), `name` varchar(255), `slug` varchar(255), `objectid` int(11), `parent_id` int(11), `field_order` int(11), `count` int(11) DEFAULT 0, `is_repeat` tinyint(1) DEFAULT 0, `description` text, `status` varchar(255),  INDEX `index_custom_fields_on_object_class`  (`object_class`) ,  INDEX `index_custom_fields_on_slug`  (`slug`) ,  INDEX `index_custom_fields_on_objectid`  (`objectid`) ,  INDEX `index_custom_fields_on_parent_id`  (`parent_id`) ) ENGINE=InnoDB
+  [1m[36m (160.0ms)[0m  [1mCREATE TABLE `custom_fields_relationships` (`id` int(11) auto_increment PRIMARY KEY, `objectid` int(11), `custom_field_id` int(11), `term_order` int(11), `object_class` varchar(255), `value` longtext, `custom_field_slug` varchar(255),  INDEX `index_custom_fields_relationships_on_objectid`  (`objectid`) ,  INDEX `index_custom_fields_relationships_on_custom_field_id`  (`custom_field_id`) ,  INDEX `index_custom_fields_relationships_on_object_class`  (`object_class`) ,  INDEX `index_custom_fields_relationships_on_custom_field_slug`  (`custom_field_slug`) ) ENGINE=InnoDB[0m
+  [1m[35m (129.6ms)[0m  CREATE TABLE `metas` (`id` int(11) auto_increment PRIMARY KEY, `key` varchar(255), `value` longtext, `objectid` int(11), `object_class` varchar(255),  INDEX `index_metas_on_key`  (`key`) ,  INDEX `index_metas_on_objectid`  (`objectid`) ,  INDEX `index_metas_on_object_class`  (`object_class`) ) ENGINE=InnoDB
+  [1m[36m (153.1ms)[0m  [1mALTER TABLE posts CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;[0m
+  [1m[35m (106.9ms)[0m  ALTER TABLE custom_fields_relationships CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20150611161134')
+  [1m[36m (16.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'openportal_development'
+  AND fk.table_name = 'comments'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `comments`
+  [1m[36m (0.4ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'openportal_development'
+  AND fk.table_name = 'custom_fields'
+[0m
+  [1m[35m (0.3ms)[0m  SHOW CREATE TABLE `custom_fields`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'openportal_development'
+  AND fk.table_name = 'custom_fields_relationships'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `custom_fields_relationships`
+  [1m[36m (0.4ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'openportal_development'
+  AND fk.table_name = 'metas'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `metas`
+  [1m[36m (0.4ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'openportal_development'
+  AND fk.table_name = 'posts'
+[0m
+  [1m[35m (0.3ms)[0m  SHOW CREATE TABLE `posts`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'openportal_development'
+  AND fk.table_name = 'term_relationships'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `term_relationships`
+  [1m[36m (0.4ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'openportal_development'
+  AND fk.table_name = 'term_taxonomy'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `term_taxonomy`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'openportal_development'
+  AND fk.table_name = 'user_relationships'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `user_relationships`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'openportal_development'
+  AND fk.table_name = 'users'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `users`
