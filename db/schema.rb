@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150611161134) do
+ActiveRecord::Schema.define(version: 20150926095310) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "author",         limit: 255
@@ -77,13 +77,36 @@ ActiveRecord::Schema.define(version: 20150611161134) do
   add_index "metas", ["object_class"], name: "index_metas_on_object_class", using: :btree
   add_index "metas", ["objectid"], name: "index_metas_on_objectid", using: :btree
 
+  create_table "plugins_attacks", force: :cascade do |t|
+    t.string   "path",        limit: 255
+    t.string   "browser_key", limit: 255
+    t.integer  "site_id",     limit: 4
+    t.datetime "created_at"
+  end
+
+  add_index "plugins_attacks", ["browser_key"], name: "index_plugins_attacks_on_browser_key", using: :btree
+  add_index "plugins_attacks", ["path"], name: "index_plugins_attacks_on_path", using: :btree
+  add_index "plugins_attacks", ["site_id"], name: "index_plugins_attacks_on_site_id", using: :btree
+
+  create_table "plugins_contact_forms", force: :cascade do |t|
+    t.integer  "site_id",     limit: 4
+    t.integer  "count",       limit: 4
+    t.integer  "parent_id",   limit: 4
+    t.string   "name",        limit: 255
+    t.string   "slug",        limit: 255
+    t.text     "description", limit: 65535
+    t.text     "value",       limit: 65535
+    t.text     "settings",    limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string   "title",            limit: 255
     t.string   "slug",             limit: 255
     t.text     "content",          limit: 4294967295
     t.text     "content_filtered", limit: 4294967295
     t.string   "status",           limit: 255,        default: "published"
-    t.integer  "comment_count",    limit: 4,          default: 0
     t.datetime "published_at"
     t.integer  "post_parent",      limit: 4
     t.string   "visibility",       limit: 255,        default: "public"
@@ -92,6 +115,8 @@ ActiveRecord::Schema.define(version: 20150611161134) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id",          limit: 4
+    t.integer  "post_order",       limit: 4,          default: 0
+    t.integer  "taxonomy_id",      limit: 4
   end
 
   add_index "posts", ["post_class"], name: "index_posts_on_post_class", using: :btree

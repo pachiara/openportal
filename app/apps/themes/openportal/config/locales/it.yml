@@ -214,6 +214,13 @@ it:
     front_cache:
       message:
         cache_destroyed: "Cache svuotata"
+        settings_saved: "Impostazioni salvate"
+    post_reorder:
+      updated_changes: "Modifica salvata"
+    attack:
+      messages:
+        settings_saved: "Impostazioni salvate"        
+        
   admin:
     sidebar:
       post_type: "Tipo di Contenuto"
