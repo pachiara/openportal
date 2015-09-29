@@ -214,6 +214,10 @@ it:
     front_cache:
       message:
         cache_destroyed: "Cache svuotata"
+  admin:
+    sidebar:
+      post_type: "Tipo di Contenuto"
+            
   openportal:
     title_banner1: Il portale aperto di Lombardia Informatica  
     title_banner2: Un modo moderno di cooperare per l'interesse dei cittadini  
