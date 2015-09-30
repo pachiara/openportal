@@ -219,12 +219,43 @@ it:
       updated_changes: "Modifica salvata"
     attack:
       messages:
-        settings_saved: "Impostazioni salvate"        
-        
+        settings_saved: "Impostazioni salvate" 
+    slider_basic:
+      active: 'Attivo'
+      add_slider: 'Aggiungi Slider'
+      edit_slider: 'Modifica Slider'
+      image_slides: 'Diapositive di Immagini'
+      images: 'Immagini'
+      new_slider: 'Nuovo Slider'
+      form_slider: 'Slider Form'
+      list: 'Lista'
+      next: 'Prossimo'
+      previous: 'Precedente'
+      title: 'Slider di Base'
+      title_settings: 'Slider di Base: Impostazioni'
+              
   admin:
     sidebar:
-      post_type: "Tipo di Contenuto"
-            
+      post_type: "Tipo Contenuto"
+    intro:
+      profile: "In questo luogo è possibile visualizzare le opzioni del profilo."
+      content: "Questo blocco contiene tutti i gruppi di contenuti del tuo sito. Ogni contenuto può avere struttura diversa configurato nelle impostazioni => Tipo Contenuto"
+      media: "Questa sezione gestisce i tutti i file multimediali pubblici."      
+      comments: "Questa sezione gestisce tutti i commenti dei vostri contenuti"
+      appearance: "Gestisce tutte le informazioni relative all'interfaccia pubblica"
+      themes: "In questa sezione è possibile scegliere il tema preferito (Public Interface)"
+      widgets: "Questo modulo permette di gestire i widget e incollare il codice in qualsiasi contenuto. "
+      menus: "<img style=\"max-width: 100%;\" src=\"%{image}\" /> Questo modulo permette di controllare i menu per l'interfaccia pubblica a più livelli."
+      plugins: "In questa sezione è possibile visualizzare tutti i plugin (applicazioni personalizzate per estendere la funzionalità del sito)."
+      users: "Permette di gestire tutti gli utenti del sito. Inoltre è possibile gestire i ruoli per gli utenti."
+      settings: "In questa sezione è possibile trovare tutte le configurazioni del sito."
+      gral_site: "Questa è una sezione in cui è possibile configurare tutte le impostazioni del sito e tema attuale."
+      sites: "Questo permesso modulo che per gestire i sottositi, cioè è possibile creare un numero illimitato di siti come questo (questo è visibile solo per il sito principale). Controllare /config/system.json per personalizzare le impostazioni."
+      post_type: "In questo modulo è possibile gestire i gruppi di contenuto senza programmare nulla."
+      custom_fields: "Questa sezione permette di estendere facilmente i vostri contenuti, temi, ... da campi personalizzati."
+      languages: "Questo modulo permette di gestire tutte le lingue per il sito. Inoltre è possibile configurare la lingua per il vostro pannello di amministrazione."
+      contact_form: "Questo plugin permette di creare moduli di contatto con i campi desiderati e incollare il SHORT_CODE in qualsiasi contenuto."
+                
   openportal:
     title_banner1: Il portale aperto di Lombardia Informatica  
     title_banner2: Un modo moderno di cooperare per l'interesse dei cittadini  
