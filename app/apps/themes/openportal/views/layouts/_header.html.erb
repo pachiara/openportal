@@ -1,9 +1,9 @@
 <!-- header -->
-    <nav class="white" role="navigation">
-      <div class="navbar white navbar-default navbar-fixed-top">
+    <nav class="white nav-wrapper" role="navigation">
+      <div id="nav_bar" class="navbar white navbar-default navbar-fixed-top">
         <div class="navbar-header">
           <a id="logo" href="<%= root_path %>"><%= image_tag current_site.the_logo, class: "pull_left img-responsive logo" %></a>
-          <a class="navbar_brand green-text nav_bar_title" href="<%= root_path %>"><%= current_site.name %></a>
+          <a class="navbar_brand grey-text nav_bar_title" href="<%= root_path %>"><%= current_site.name %></a>
           <button data-target="#navbar-main" data-toggle="collapse" type="button" class="navbar-toggle">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -11,17 +11,41 @@
           </button>
         </div>
         <div id="navbar-main" class="navbar-collapse collapse">
-          <div class="nav_bar_menu"><%= raw get_nav_menu('main_menu', 'nav navbar-nav') %></div>
           <div class="hidden-xs hidden-sm"><%= render partial: 'partials/search_form' %></div>
-          <!-- <%= render partial: 'partials/nav_bar_user_profile' %> -->
-          <div class="hidden-xs hidden-sm"><%= raw current_site.draw_languages("language list-inline pull-right", true) %></div>
+          <%= raw draw_menu({ menu_slug: "main_menu", 
+          	                  container_class: "nav navbar-nav navbar-left", 
+          	                  item_current: "active",
+          	                  sub_class: "dropdown-menu",
+          	                  callback_item: lambda{|args| 
+          	                  	if args[:has_children] 
+          	                  	  args[:link_attrs] = "data-toggle='dropdown'"
+          	                   	  args[:settings][:after] = "<span class='caret'></span>"
+          	                   	else
+          	                   	  args[:settings][:after] = ""	  
+          	                  	end 
+          	                  }}) %>
+          <%= render partial: 'partials/nav_bar_user_profile' %>                
         </div>
       </div>
     </nav>
-    <nav class="green" role="navigation">
-    </nav>
+    <div class="fixed-action-btn" style="bottom: 30px; right: 35px;">
+    	<a class="btn-floating btn-large green">
+          <i class="mdi-action-language"></i>
+        </a>
+        <ul>
+    	<% current_site.the_languages.each do |l| %>
+    	  <%  path = l.to_s+'.png' %>
+          <li>
+          	<% if I18n.locale.to_s.eql?(l.to_s); class_color='green' else class_color='grey lighten-3' end %>
+          	<a class="btn-floating btn-large <%= class_color %>" 
+          	href="<%= if site_current_path.include? I18n.locale.to_s then site_current_path.gsub(I18n.locale.to_s,l.to_s) else l.to_s+site_current_path end %>">
+          	<img src="<%= asset_path("language/#{path}")%>" /></a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <nav class="green visible-xs visible-sm"></nav>
     <div class="nav_bar_search container visible-xs visible-sm">
-      <%= raw current_site.draw_languages("language list-inline pull-right", true) %>    
       <%= render partial: 'partials/search_form' %>
     </div>
- <!-- ./header -->     	   	
+ <!-- ./header -->

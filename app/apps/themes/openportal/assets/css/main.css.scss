@@ -29,13 +29,8 @@
   text-transform: uppercase; 
 }
 #nav_bar {
-  background-color: #ffffff;
-  border-color: #348D45;
-  border-width: 20px 0 0;
-  border-style: solid;
-  margin-bottom: 0;
-  line-height: 1;
-  min-height: 45px;
+  border-top-color: #348D45;
+  border-top-width: 20px;
 }
 .nav_bar_title {
   font-size: 1.6em;
@@ -132,6 +127,9 @@ p {
 .green {
   background-color: #348D45 !important;
 }
+.blue {
+  background-color: #003354 !important;
+}
 .green-text {
   color: #348D45 !important;
 }
@@ -155,4 +153,26 @@ a {
   margin: 0 auto;
   max-width: 100%;
   width: 90%;
+}
+.dropdown-menu > li {
+  display: list-item;  
+  min-width: 160px;
+}
+.current_l {
+  background-color: #348D45 !important;  
+}
+.dropdown-menu > li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: 400;
+  line-height: 64px;
+  color: #333;
+  white-space: nowrap;
+}
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:focus, .dropdown-menu > .active > a:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: #348D45 !important;  
+  outline: 0;
 }
