@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.2'
 # Use mysql as the database for Active Record
-gem 'mysql2', '~> 0.3.20'
+gem 'mysql2', '>= 0.3.13', '< 0.5'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -45,9 +45,11 @@ group :development do
   gem 'spring'
 end
 
-######## mie modifiche
-gem 'camaleon_cms'
-gem 'net-ssh'
-gem 'thin'
-gem 'materialize-sass'
-gem 'bootstrap-sass'
+gem "camaleon_cms"
+gem "thin"
+gem "camaleon_post_order"
+gem 'camaleon_user_tag'
+
+#################### Camaleon CMS include all gems for plugins and themes ####################
+require './lib/plugin_routes'
+instance_eval(PluginRoutes.draw_gems)

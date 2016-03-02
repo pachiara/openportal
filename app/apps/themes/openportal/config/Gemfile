@@ -1,2 +1,3 @@
 # material design
 gem 'materialize-sass'
+gem 'bootstrap-sass'

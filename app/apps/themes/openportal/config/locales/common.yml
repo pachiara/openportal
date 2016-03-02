@@ -186,4 +186,3 @@ it:
   will_paginate:
     previous_label: 'Precedente'
     next_label: 'Successivo'
-
