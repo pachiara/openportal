@@ -12,19 +12,19 @@
         </div>
         <div id="navbar-main" class="navbar-collapse collapse">
           <div class="hidden-xs hidden-sm"><%= render partial: 'partials/search_form' %></div>
-          <%= raw draw_menu({ menu_slug: "main_menu", 
-          	                  container_class: "nav navbar-nav navbar-left", 
+          <%= raw draw_menu({ menu_slug: "main_menu",
+          	                  container_class: "nav navbar-nav navbar-left",
           	                  item_current: "active",
           	                  sub_class: "dropdown-menu",
-          	                  callback_item: lambda{|args| 
-          	                  	if args[:has_children] 
+          	                  callback_item: lambda{|args|
+          	                  	if args[:has_children]
           	                  	  args[:link_attrs] = "data-toggle='dropdown'"
           	                   	  args[:settings][:after] = "<span class='caret'></span>"
           	                   	else
-          	                   	  args[:settings][:after] = ""	  
-          	                  	end 
+          	                   	  args[:settings][:after] = ""
+          	                  	end
           	                  }}) %>
-          <%= render partial: 'partials/nav_bar_user_profile' %>                
+          <%= render partial: 'partials/nav_bar_user_profile' %>
         </div>
       </div>
     </nav>
@@ -37,9 +37,9 @@
     	  <%  path = l.to_s+'.png' %>
           <li>
           	<% if I18n.locale.to_s.eql?(l.to_s); class_color='green' else class_color='grey lighten-3' end %>
-          	<a class="btn-floating btn-large <%= class_color %>" 
+          	<a class="btn-floating btn-large <%= class_color %>"
           	href="<%= if site_current_path.include? I18n.locale.to_s then site_current_path.gsub(I18n.locale.to_s,l.to_s) else l.to_s+site_current_path end %>">
-          	<img src="<%= asset_path("language/#{path}")%>" /></a>
+          	<img src="<%= asset_path(theme_asset_path("images/"+l.to_s+".png"))%>" /></a>
           </li>
         <% end %>
       </ul>

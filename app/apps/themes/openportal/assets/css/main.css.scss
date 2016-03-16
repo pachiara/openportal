@@ -177,3 +177,7 @@ a {
   background-color: #348D45 !important;
   outline: 0;
 }
+.input-group .form-control:last-child, .input-group-addon:last-child, .input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-large, .input-group-btn:last-child > .btn-group > .btn, .input-group-btn:last-child > .btn-group > .btn-large, .input-group-btn:last-child > .dropdown-toggle, .input-group-btn:first-child > .btn:not(:first-child), .input-group-btn:first-child > .btn-large:not(:first-child), .input-group-btn:first-child > .btn-group:not(:first-child) > .btn, .input-group-btn:first-child > .btn-group:not(:first-child) > .btn-large {
+    border-bottom-left-radius: 50%;
+    border-top-left-radius: 50%;
+}
