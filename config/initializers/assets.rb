@@ -14,4 +14,13 @@ if Rails.env.production?
   Rails.application.config.assets.precompile =  [ '*.js', '_variables.scss', '*.css.scss' ]
   Rails.application.config.assets.precompile += %w( camaleon_cms/admin/admin-basic-manifest.css )
   Rails.application.config.assets.precompile += %w( camaleon_cms/camaleon.png )
+  Rails.application.config.assets.precompile += %w( camaleon_cms/favicon.ico )
+  Rails.application.config.assets.precompile += %w( themes/openportal/assets/css/main.css )
+  Rails.application.config.assets.precompile += %w( themes/openportal/assets/images/en.png )
+  Rails.application.config.assets.precompile += %w( themes/openportal/assets/images/it.png )
+  Rails.application.config.assets.precompile += %w( camaleon_cms/admin/intro/menus.png )
+  Rails.application.config.assets.precompile += %w( camaleon_cms/admin/admin-manifest.css )
+  Rails.application.config.assets.precompile += %w( camaleon_cms/image-not-found.png )
+  Rails.application.config.assets.precompile += %w( camaleon_cms/admin/img/no_image.jpg )
+  Rails.application.config.assets.precompile += %w( camaleon_cms/admin/colorpicker.css )
 end
