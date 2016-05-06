@@ -11,5 +11,7 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 
 if Rails.env.production?
-  Rails.application.config.assets.precompile =  [ '*.js', '_variables.scss', '*.css.scss' ]  
+  Rails.application.config.assets.precompile =  [ '*.js', '_variables.scss', '*.css.scss' ]
+  Rails.application.config.assets.precompile += %w( camaleon_cms/admin/admin-basic-manifest.css )
+  Rails.application.config.assets.precompile += %w( camaleon_cms/camaleon.png )
 end
