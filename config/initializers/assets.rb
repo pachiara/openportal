@@ -23,4 +23,5 @@ if Rails.env.production?
   Rails.application.config.assets.precompile += %w( camaleon_cms/image-not-found.png )
   Rails.application.config.assets.precompile += %w( camaleon_cms/admin/img/no_image.jpg )
   Rails.application.config.assets.precompile += %w( camaleon_cms/admin/colorpicker.css )
+  Rails.application.config.assets.precompile += %w( camaleon_cms/admin/cropper/cropper.min.css )
 end
