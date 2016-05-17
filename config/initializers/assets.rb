@@ -26,4 +26,5 @@ if Rails.env.production?
   Rails.application.config.assets.precompile += %w( camaleon_cms/admin/cropper/cropper.min.css )
   Rails.application.config.assets.precompile += %w( camaleon_cms/admin/nestable/jquery.nestable.css )
   Rails.application.config.assets.precompile += %w( camaleon_cms/admin/nav-menu.css )
+  Rails.application.config.assets.precompile += %w( camaleon_cms/category-icon.png )
 end
