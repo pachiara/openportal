@@ -7,9 +7,13 @@
       <a href="<%= cama_root_path %>" class="brand-logo title center"><%= current_site.name %></a>
       <ul class="right hide-on-med-and-down">
         <%= raw draw_menu({ menu_slug: "main_menu",
-                            container_class: "right hide-on-med-and-down",
-                            item_current: "active",
-                            sub_class: "dropdown-menu",
+                            container:         'ul', #type of container for the menu
+                            container_id:      '', #container id for the menu
+                            container_class:   "right hide-on-med-and-down", #container class for the menu
+                            item_container:    'li', #type of container for the items
+                            item_current:      'active', #class for current menu item
+                            sub_container:     'ul', #type of container for sub items
+                            sub_class:         'dropdown-menu', # class for sub container
                             callback_item: lambda{|args|
                               if args[:has_children]
                                 args[:settings][:after] = '<i class="material-icons right">arrow_drop_down</i>'
