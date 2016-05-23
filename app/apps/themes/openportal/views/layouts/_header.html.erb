@@ -5,24 +5,52 @@
     <div class="nav-wrapper container">
       <a href="<%= cama_root_path %>" class="brand-logo"><%= image_tag current_site.the_logo %></a>
       <a href="<%= cama_root_path %>" class="brand-logo title center"><%= current_site.name %></a>
+
+<!--
       <ul class="right hide-on-med-and-down">
-        <%= raw draw_menu({ menu_slug: "main_menu",
+      <ul id="dropdown1" class="dropdown-content">
+          <li><a href="#!">one</a></li>
+          <li><a href="#!">two</a></li>
+          <li class="divider"></li>
+          <li><a href="#!">three</a></li>
+        </ul>
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+-->
+
+
+        <%= raw draw_menu({ menu_slug:         "main_menu",
                             container:         'ul', #type of container for the menu
                             container_id:      '', #container id for the menu
                             container_class:   "right hide-on-med-and-down", #container class for the menu
                             item_container:    'li', #type of container for the items
                             item_current:      'active', #class for current menu item
+                            item_class:        '', # class for all menu items
+                            item_class_parent: "", # class for all menu items that contain sub items
                             sub_container:     'ul', #type of container for sub items
-                            sub_class:         'dropdown-menu', # class for sub container
-                            callback_item: lambda{|args|
+                            sub_class:         'dropdown-content', # class for sub container
+                            callback_item:     lambda{|args|
                               if args[:has_children]
                                 args[:settings][:after] = '<i class="material-icons right">arrow_drop_down</i>'
+                                #args[:link_attrs] = "data-activates='#{args[:menu_item].id}'";
+                                args[:link_attrs] = "data-activates='level-1'";
                               else
-                                args[:settings][:after] = ""
+                                args[:link_attrs] = "id='#{args[:menu_item].id}'";
                               end
-                            }}) %>
+                            },
+                            before:            '', # content before link text
+                            after:             '', # content after link text
+                            link_current:      'current-link', # class for current menu link
+                            link_before:       '', # content before link
+                            link_after:        '', # content after link
+                            link_class:        '', # class for all menu links
+                            link_class_parent: "dropdown-button", # class for all menu links that contain sub items
+                            levels:             -1, # max of levels to recover, -1 => return all levels
+                            container_prepend: '', # content prepend for menu container
+                            container_append:  ''  # content append for menu container
+                            }) %>
+
         <%= render partial: 'partials/nav_bar_user_profile' %>
-      </ul>
+
       <ul id="nav-mobile" class="side-nav">
         <li><a href="<%= cama_root_path %>">OpenPortal<i class="material-icons left">home</i></a></li>
         <%= raw draw_menu({ menu_slug:         'main_menu',
@@ -39,8 +67,6 @@
                               if args[:has_children]
                                 args[:link_attrs] = "data-toggle=''"
                                 args[:settings][:after] = '<i class="material-icons right">arrow_drop_down_circle</i>'
-                              else
-                                args[:settings][:after] = ""
                               end
                             }}) %>
         <%= render partial: 'partials/nav_bar_user_profile' %>
@@ -50,28 +76,6 @@
   </nav>
 </div>
 
-
-<!-- Dropdown Structure
-<ul id="dropdown1" class="dropdown-content">
-  <li><a href="#!">one</a></li>
-  <li><a href="#!">two</a></li>
-  <li class="divider"></li>
-  <li><a href="#!">three</a></li>
-</ul>
-<nav>
-  <div class="nav-wrapper">
-    <a href="#!" class="brand-logo">Logo</a>
-
-    <ul class="right hide-on-med-and-down">
-      <li><a href="sass.html">Sass</a></li>
-      <li><a href="badges.html">Components</a></li>
-
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
-
-    </ul>
-  </div>
-</nav>
--->
 
 
 <!--
