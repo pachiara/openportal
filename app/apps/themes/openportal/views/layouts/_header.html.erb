@@ -1,132 +1,59 @@
 <!-- header -->
 
 <div class="navbar-fixed">
-  <nav class="white" role="navigation">
+  <nav class="green" role="navigation">
     <div class="nav-wrapper container">
       <a href="<%= cama_root_path %>" class="brand-logo"><%= image_tag current_site.the_logo %></a>
       <a href="<%= cama_root_path %>" class="brand-logo title center"><%= current_site.name %></a>
 
-<!--
+      <div class="hidden-xs hidden-sm"><%= render partial: 'partials/search_form' %></div>
       <ul class="right hide-on-med-and-down">
-      <ul id="dropdown1" class="dropdown-content">
-          <li><a href="#!">one</a></li>
-          <li><a href="#!">two</a></li>
-          <li class="divider"></li>
-          <li><a href="#!">three</a></li>
-        </ul>
-        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
--->
-
-
-        <%= raw draw_menu({ menu_slug:         "main_menu",
-                            container:         'ul', #type of container for the menu
-                            container_id:      '', #container id for the menu
-                            container_class:   "right hide-on-med-and-down", #container class for the menu
-                            item_container:    'li', #type of container for the items
+        <%= render partial: 'partials/nav_bar_user_profile' %>
+        <%= raw draw_menu({ menu_slug:       "main_menu",
+                            container_class: "right hide-on-med-and-down",
+                            item_current:    "active",
+                            sub_class:       "dropdown-menu",
+                            callback_item:   lambda{|args|
+                              if args[:has_children]
+                                args[:settings][:after] = '<i class="material-icons right">arrow_drop_down</i>'
+                              end
+                            }}) %>
+      </ul>
+      <ul id="nav-mobile" class="side-nav">
+        <%= render partial: 'partials/nav_bar_user_profile' %>
+        <li><a href="<%= cama_root_path %>">OpenPortal<i class="material-icons left">home</i></a></li>
+        <%= raw draw_menu({ menu_slug:         'main_menu',
+                            container_class:   "",
                             item_current:      'active', #class for current menu item
-                            item_class:        '', # class for all menu items
-                            item_class_parent: "", # class for all menu items that contain sub items
-                            sub_container:     'ul', #type of container for sub items
-                            sub_class:         'dropdown-content', # class for sub container
                             callback_item:     lambda{|args|
                               if args[:has_children]
                                 args[:settings][:after] = '<i class="material-icons right">arrow_drop_down</i>'
-                                #args[:link_attrs] = "data-activates='#{args[:menu_item].id}'";
-                                args[:link_attrs] = "data-activates='level-1'";
-                              else
-                                args[:link_attrs] = "id='#{args[:menu_item].id}'";
-                              end
-                            },
-                            before:            '', # content before link text
-                            after:             '', # content after link text
-                            link_current:      'current-link', # class for current menu link
-                            link_before:       '', # content before link
-                            link_after:        '', # content after link
-                            link_class:        '', # class for all menu links
-                            link_class_parent: "dropdown-button", # class for all menu links that contain sub items
-                            levels:             -1, # max of levels to recover, -1 => return all levels
-                            container_prepend: '', # content prepend for menu container
-                            container_append:  ''  # content append for menu container
-                            }) %>
-
-        <%= render partial: 'partials/nav_bar_user_profile' %>
-
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="<%= cama_root_path %>">OpenPortal<i class="material-icons left">home</i></a></li>
-        <%= raw draw_menu({ menu_slug:         'main_menu',
-                            container:         'ul', #type of container for the menu
-                            container_id:      '', #container id for the menu
-                            container_class:   '', #container class for the menu
-                            item_container:    'li', #type of container for the items
-                            item_current:      'active', #class for current menu item
-                            item_class:        'menu-item', # class for all menu items
-                            item_class_parent: '', # class for all menu items that contain sub items
-                            sub_container:     'ul', #type of container for sub items
-                            sub_class:         '', # class for sub container
-                            callback_item:     lambda{|args|
-                              if args[:has_children]
-                                args[:link_attrs] = "data-toggle=''"
-                                args[:settings][:after] = '<i class="material-icons right">arrow_drop_down_circle</i>'
                               end
                             }}) %>
-        <%= render partial: 'partials/nav_bar_user_profile' %>
       </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons white-text">menu</i></a>
     </div>
   </nav>
 </div>
 
-
-
-<!--
-    <nav class="white nav-wrapper" role="navigation">
-      <div id="nav_bar" class="navbar white navbar-default navbar-fixed-top">
-        <div class="navbar-header">
-          <a id="logo" href="<%= cama_root_path %>"><%= image_tag current_site.the_logo, class: "pull_left img-responsive logo" %></a>
-          <a class="navbar_brand grey-text nav_bar_title" href="<%= cama_root_path %>"><%= current_site.name %></a>
-          <button data-target="#navbar-main" data-toggle="collapse" type="button" class="navbar-toggle">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div id="navbar-main" class="navbar-collapse collapse">
-          <div class="hidden-xs hidden-sm"><%= render partial: 'partials/search_form' %></div>
-          <%= raw draw_menu({ menu_slug: "main_menu",
-          	                  container_class: "nav navbar-nav navbar-left",
-          	                  item_current: "active",
-          	                  sub_class: "dropdown-menu",
-          	                  callback_item: lambda{|args|
-          	                  	if args[:has_children]
-          	                  	  args[:link_attrs] = "data-toggle='dropdown'"
-          	                   	  args[:settings][:after] = "<span class='caret'></span>"
-          	                   	else
-          	                   	  args[:settings][:after] = ""
-          	                  	end
-          	                  }}) %>
-          <%= render partial: 'partials/nav_bar_user_profile' %>
-        </div>
-      </div>
-    </nav>
-  -->
-    <div class="fixed-action-btn" style="bottom: 30px; right: 35px;">
-    	<a class="btn-floating btn-large green">
-          <i class="material-icons">language</i>
-        </a>
-        <ul>
-    	<% current_site.the_languages.each do |l| %>
-    	  <%  path = l.to_s+'.png' %>
-          <li>
-          	<% if I18n.locale.to_s.eql?(l.to_s); class_color='green' else class_color='grey lighten-3' end %>
-          	<a class="btn-floating btn-large <%= class_color %>"
-          	href="<%= if site_current_path.include? I18n.locale.to_s then site_current_path.gsub(I18n.locale.to_s,l.to_s) else l.to_s+site_current_path end %>">
-          	<img src="<%= asset_path(theme_asset_path("images/"+l.to_s+".png"))%>" /></a>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-    <nav class="green visible-xs visible-sm"></nav>
-    <div class="nav_bar_search container visible-xs visible-sm">
-      <%= render partial: 'partials/search_form' %>
-    </div>
+<div class="fixed-action-btn" style="bottom: 30px; right: 35px;">
+  <a class="btn-floating btn-large green">
+    <i class="material-icons">language</i>
+  </a>
+  <ul>
+    <% current_site.the_languages.each do |l| %>
+    <%  path = l.to_s+'.png' %>
+    <li>
+      <% if I18n.locale.to_s.eql?(l.to_s); class_color='green' else class_color='grey lighten-3' end %>
+      <a class="btn-floating btn-large <%= class_color %>"
+      href="<%= if site_current_path.include? I18n.locale.to_s then site_current_path.gsub(I18n.locale.to_s,l.to_s) else l.to_s+site_current_path end %>">
+      <img src="<%= asset_path(theme_asset_path("images/"+l.to_s+".png"))%>" /></a>
+    </li>
+    <% end %>
+  </ul>
+</div>
+<nav class="white visible-xs visible-sm"></nav>
+<div class="nav_bar_search container visible-xs visible-sm">
+  <%= render partial: 'partials/search_form' %>
+</div>
  <!-- ./header -->

@@ -126,12 +126,15 @@
  */
 nav ul a,
 nav .brand-logo {
-  color: #444;
+  color: white;
 }
-nav .brand-logo.title{
-    left: 50%;
-    transform: translateX(-50%);
-    color: green;
+nav .brand-logo.title {
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+}
+nav ul a:hover {
+  color: #aaa;
 }
 @media only screen and (max-width: 992px) {
   nav .brand-logo.title {
