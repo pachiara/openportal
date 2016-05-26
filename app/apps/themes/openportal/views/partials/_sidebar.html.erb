@@ -1,23 +1,39 @@
 <% if post.has_thumb? %>
-  <%= raw post.the_link_thumb({}, {class: "img-responsive img-rounded col-md-12 col-lg-12"}) %>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <%= raw post.the_link_thumb({}, {class: "img-responsive img-rounded col-md-12 col-lg-12"}) %>
+        </div>
+    </div>
 <%  end %>
 
 <% categories = post.the_categories.decorate %>
 <% if categories.present? %>
-  <%= t('common.categories') %>
-  <ul>
-    <% categories.each do |cat| %>
-      <li><a href="<%= cat.the_url %>"><%= cat.the_title %></a></li>
-    <% end %>
-  </ul>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <%= t('common.categories') %>
+        </div>
+        <div class="panel-body">
+            <ul>
+                <% categories.each do |cat| %>
+                    <li><a href="<%= cat.the_url %>"><%= cat.the_title %></a></li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
 <% end %>
 
-<%= t('common.latest_posts') %>
-<ul>
-  <% current_site.the_contents(@post_type.slug).order(created_at: :desc).limit(7).decorate.each do |p| %>
-    <li><a href="<%= p.the_url %>"><%= p.the_title %></a></li>
-  <% end %>
-</ul>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <%= t('common.latest_posts') %>
+    </div>
+    <div class="panel-body">
+        <ul>
+            <% current_site.the_contents(@post_type.slug).order(created_at: :desc).limit(7).decorate.each do |p| %>
+                <li><a href="<%= p.the_url %>"><%= p.the_title %></a></li>
+            <% end %>
+        </ul>
+    </div>
+</div>
 
 <% tags = post.the_tags.decorate %>
 <% if tags.present? %>

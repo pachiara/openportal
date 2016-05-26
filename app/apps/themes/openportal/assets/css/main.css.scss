@@ -254,3 +254,8 @@ a {
     border-bottom-left-radius: 50%;
     border-top-left-radius: 50%;
 }
+.breadcrumb:last-child {
+  content: "/ ";
+  color: #ccc;
+  padding: 0 5px;
+}

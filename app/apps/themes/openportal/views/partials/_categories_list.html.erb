@@ -7,8 +7,9 @@
                     <% _cats.each do |cat| %>
                         <div class="col-md-2">
                             <a href="<%= cat.the_url %>" class="thumbnail text-center">
-                            	<i class="green-text large mdi-file-folder"></i><br />
-                                <!-- <img src="<%= cat.the_thumb_url %>" alt="Image" style="max-width:100%;"> -->
+                            	  <!-- <i class="green-text large mdi-file-folder"></i><br /> -->
+                                <!-- <img src="<%= cat.the_thumb_url %>" alt="Image" style="max-width:50%;"> -->
+                                <i class="material-icons">folder_special</i><br />
                                 <span class="category-title"><%= cat.the_title %></span>
                             </a>
                         </div>
