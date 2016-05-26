@@ -1,13 +1,16 @@
-<div class="col-sm-6 col-md-4 col-lg-3 post-list-item">
-    <div class="thumbnail">
-        <%= raw post.the_link_thumb({}, {style: "height: 200px; width: 100%; display: block;"}) %>
-        <div class="caption">
-            <h4 id="thumbnail-label">
-                <a href="<%= post.the_url %>"><%= post.the_title %></a>
-            </h4>
-            <small class="" style="display: block;"><%= post.the_created_at %></small>
-            <hr>
-            <p><%= raw post.the_excerpt %></p>
-        </div>
-    </div>
+<div class="col-sm-6 col-md-4 col-lg-3 card">
+  <div class="card-image waves-effect waves-block waves-light">
+    <%= raw post.the_link_thumb({}, {style: "margin-top: 5px;",class: "activator"}) %>
+  </div>
+  <div class="card-content">
+    <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
+    <p>
+      <a href="<%= post.the_url %>"><%= post.the_title %></a>
+      <small class="" style="display: block;"><%= post.the_created_at %></small>
+    </p>
+  </div>
+  <div class="card-reveal">
+    <span class="card-title grey-text text-darken-4"><%= post.the_title %><i class="material-icons right">close</i></span>
+    <p><%= raw post.the_excerpt %></p>
+  </div>
 </div>

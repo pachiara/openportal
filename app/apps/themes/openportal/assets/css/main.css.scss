@@ -129,7 +129,7 @@ nav .brand-logo {
   color: white;
 }
 nav .brand-logo.title {
-  left: 20%;
+  left: 10%;
   transform: translateX(-50%);
   color: white;
 }
@@ -210,9 +210,13 @@ body {
   font-family: roboto;
   font-size: 1.6em;
   color: #777;
+  background-color: #fefefe;
 }
 a {
   color: #348D45;
+}
+.card {
+  margin-right: 10px;
 }
 @media only screen and (min-width: 993px) {
   .container {
@@ -222,7 +226,7 @@ a {
 .container {
   margin: 0 auto;
   max-width: 100%;
-  width: 90%;
+  width: 96%;
 }
 .dropdown-menu > li {
   display: list-item;

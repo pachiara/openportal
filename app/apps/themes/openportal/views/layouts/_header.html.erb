@@ -5,10 +5,11 @@
     <div class="nav-wrapper container">
       <a href="<%= cama_root_path %>" class="brand-logo"><%= image_tag current_site.the_logo %></a>
       <a href="<%= cama_root_path %>" class="brand-logo title center"><%= current_site.name %></a>
-
-      <div class="hidden-xs hidden-sm"><%= render partial: 'partials/search_form' %></div>
       <ul class="right hide-on-med-and-down">
         <%= render partial: 'partials/nav_bar_user_profile' %>
+      </ul>
+      <div class="hidden-xs hidden-sm"><%= render partial: 'partials/search_form' %></div>
+      <ul class="right hide-on-med-and-down">
         <%= raw draw_menu({ menu_slug:       "main_menu",
                             container_class: "right hide-on-med-and-down",
                             item_current:    "active",
