@@ -129,7 +129,7 @@ nav .brand-logo {
   color: white;
 }
 nav .brand-logo.title {
-  left: 10%;
+  left: 15%;
   transform: translateX(-50%);
   color: white;
 }
@@ -255,7 +255,5 @@ a {
     border-top-left-radius: 50%;
 }
 .breadcrumb:last-child {
-  content: "/ ";
   color: #ccc;
-  padding: 0 5px;
 }

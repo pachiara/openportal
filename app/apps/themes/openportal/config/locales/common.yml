@@ -183,6 +183,12 @@ it:
     view_all_news: "Vedi tutte le news"
     extra_attributes: "Attributi extra"
 
+  camaleon_cms:
+    admin:
+      button:
+        search: Cerca
+
+
   will_paginate:
     previous_label: 'Precedente'
     next_label: 'Successivo'
