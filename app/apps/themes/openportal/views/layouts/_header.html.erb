@@ -27,6 +27,7 @@
                             container_class:   "",
                             item_current:      'active', #class for current menu item
                             callback_item:     lambda{|args|
+                              args[:settings][:before] = '<i class="material-icons left">comment</i>'
                               if args[:has_children]
                                 args[:settings][:after] = '<i class="material-icons right">arrow_drop_down</i>'
                               end

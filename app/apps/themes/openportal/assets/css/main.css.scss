@@ -124,6 +124,10 @@
  *
  * Made By MaterializeCSS.com
  */
+nav {
+  height: 64px;
+  line-height: 60px;
+}
 nav ul a,
 nav .brand-logo {
   color: white;
@@ -250,10 +254,34 @@ a {
   background-color: #348D45 !important;
   outline: 0;
 }
-.input-group .form-control:last-child, .input-group-addon:last-child, .input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-large, .input-group-btn:last-child > .btn-group > .btn, .input-group-btn:last-child > .btn-group > .btn-large, .input-group-btn:last-child > .dropdown-toggle, .input-group-btn:first-child > .btn:not(:first-child), .input-group-btn:first-child > .btn-large:not(:first-child), .input-group-btn:first-child > .btn-group:not(:first-child) > .btn, .input-group-btn:first-child > .btn-group:not(:first-child) > .btn-large {
+.input-group .form-control:last-child, .input-group-addon:last-child, .input-group-btn:last-child > .btn,
+.input-group-btn:last-child > .btn-large, .input-group-btn:last-child > .btn-group > .btn, .input-group-btn:last-child > .btn-group > .btn-large, .input-group-btn:last-child > .dropdown-toggle, .input-group-btn:first-child > .btn:not(:first-child), .input-group-btn:first-child > .btn-large:not(:first-child), .input-group-btn:first-child > .btn-group:not(:first-child) > .btn, .input-group-btn:first-child > .btn-group:not(:first-child) > .btn-large {
     border-bottom-left-radius: 50%;
     border-top-left-radius: 50%;
 }
 .breadcrumb:last-child {
   color: #ccc;
+}
+@media (min-width: 993px) {
+  .navbar-form .input-group > .form-control {
+    background-color: #43a047;
+    color: white;
+    line-height: 60px;
+    margin-top: 6px;
+    margin-right: 5px;
+  }
+  .form-control::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #ddd;
+  }
+  .form-control:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #ddd;
+    opacity: 1;
+  }
+  .form-control::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #ddd;
+    opacity: 1;
+  }
+  .form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #ddd;
+  }
 }
