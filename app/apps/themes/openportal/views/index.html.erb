@@ -1,14 +1,12 @@
 <!-- +++++ Welcome Section +++++ -->
 <div id="ww">
-  <div class="container-fluid" >
+  <div class="container">
     <div class="row">
-      <div class="col m10 offset-m1 z-depth-1">
         <% home_page = (current_site.the_post(current_theme.get_field("home_page").to_i) || current_site.the_posts("page").first).decorate %>
         <h2 class="center-align"><%= home_page.the_title %></h2>
         <div><%= raw home_page.the_content %></div>
-      </div><!-- /col-lg-8 -->
     </div><!-- /row -->
-  </div> <!-- /container -->
+  </div><!-- /container -->
 </div><!-- /ww -->
 
 <!-- +++++ Projects Section +++++ -->

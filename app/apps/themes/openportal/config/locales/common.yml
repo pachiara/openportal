@@ -187,6 +187,8 @@ it:
     admin:
       button:
         search: Cerca
+      sidebar:
+        contents: 'Contenuti'
 
 
   will_paginate:

@@ -140,6 +140,9 @@ nav .brand-logo.title {
 nav ul a:hover {
   color: #aaa;
 }
+.space {
+  height: 30px;
+}
 @media only screen and (max-width: 992px) {
   nav .brand-logo.title {
     display: none;
@@ -224,7 +227,7 @@ a {
 }
 @media only screen and (min-width: 993px) {
   .container {
-    width: 85%;
+    width: 90%;
   }
 }
 .container {
