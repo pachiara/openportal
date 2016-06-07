@@ -28,7 +28,7 @@
     <div id="wrapper" class="clearfix">
         <div class="home-wrap clearfix">
             <% if is_home? %>
-                <%= yield %>
+                <div class="container"><%= yield %></div>
             <% else %>
                 <div id="ww">
                     <div class="container"><%= yield %></div>
