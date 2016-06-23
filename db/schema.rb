@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151212095328) do
+ActiveRecord::Schema.define(version: 20160609121449) do
 
   create_table "cama_comments", force: :cascade do |t|
     t.string   "author",         limit: 255
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20151212095328) do
     t.string  "object_class",      limit: 255
     t.text    "value",             limit: 4294967295
     t.string  "custom_field_slug", limit: 255
+    t.integer "group_number",      limit: 4,          default: 0
   end
 
   add_index "cama_custom_fields_relationships", ["custom_field_id"], name: "index_cama_custom_fields_relationships_on_custom_field_id", using: :btree
@@ -93,6 +94,7 @@ ActiveRecord::Schema.define(version: 20151212095328) do
     t.integer  "user_id",          limit: 4
     t.integer  "post_order",       limit: 4,          default: 0
     t.integer  "taxonomy_id",      limit: 4
+    t.boolean  "is_feature",                          default: false
   end
 
   add_index "cama_posts", ["post_class"], name: "index_cama_posts_on_post_class", using: :btree
@@ -159,11 +161,187 @@ ActiveRecord::Schema.define(version: 20151212095328) do
     t.string   "confirm_email_token",    limit: 255
     t.datetime "confirm_email_sent_at"
     t.boolean  "is_valid_email",                     default: true
+    t.string   "first_name",             limit: 255
+    t.string   "last_name",              limit: 255
   end
 
   add_index "cama_users", ["email"], name: "index_cama_users_on_email", using: :btree
   add_index "cama_users", ["role"], name: "index_cama_users_on_role", using: :btree
   add_index "cama_users", ["site_id"], name: "index_cama_users_on_site_id", using: :btree
   add_index "cama_users", ["username"], name: "index_cama_users_on_username", using: :btree
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "author",         limit: 255
+    t.string   "author_email",   limit: 255
+    t.string   "author_url",     limit: 255
+    t.string   "author_IP",      limit: 255
+    t.text     "content",        limit: 65535
+    t.string   "approved",       limit: 255,   default: "pending"
+    t.string   "agent",          limit: 255
+    t.string   "typee",          limit: 255
+    t.integer  "comment_parent", limit: 4
+    t.integer  "post_id",        limit: 4
+    t.integer  "user_id",        limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["approved"], name: "index_comments_on_approved", using: :btree
+  add_index "comments", ["comment_parent"], name: "index_comments_on_comment_parent", using: :btree
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "custom_fields", force: :cascade do |t|
+    t.string  "object_class", limit: 255
+    t.string  "name",         limit: 255
+    t.string  "slug",         limit: 255
+    t.integer "objectid",     limit: 4
+    t.integer "parent_id",    limit: 4
+    t.integer "field_order",  limit: 4
+    t.integer "count",        limit: 4,     default: 0
+    t.boolean "is_repeat",                  default: false
+    t.text    "description",  limit: 65535
+    t.string  "status",       limit: 255
+  end
+
+  add_index "custom_fields", ["object_class"], name: "index_custom_fields_on_object_class", using: :btree
+  add_index "custom_fields", ["objectid"], name: "index_custom_fields_on_objectid", using: :btree
+  add_index "custom_fields", ["parent_id"], name: "index_custom_fields_on_parent_id", using: :btree
+  add_index "custom_fields", ["slug"], name: "index_custom_fields_on_slug", using: :btree
+
+  create_table "custom_fields_relationships", force: :cascade do |t|
+    t.integer "objectid",          limit: 4
+    t.integer "custom_field_id",   limit: 4
+    t.integer "term_order",        limit: 4
+    t.string  "object_class",      limit: 255
+    t.text    "value",             limit: 4294967295
+    t.string  "custom_field_slug", limit: 255
+  end
+
+  add_index "custom_fields_relationships", ["custom_field_id"], name: "index_custom_fields_relationships_on_custom_field_id", using: :btree
+  add_index "custom_fields_relationships", ["custom_field_slug"], name: "index_custom_fields_relationships_on_custom_field_slug", using: :btree
+  add_index "custom_fields_relationships", ["object_class"], name: "index_custom_fields_relationships_on_object_class", using: :btree
+  add_index "custom_fields_relationships", ["objectid"], name: "index_custom_fields_relationships_on_objectid", using: :btree
+
+  create_table "metas", force: :cascade do |t|
+    t.string  "key",          limit: 255
+    t.text    "value",        limit: 4294967295
+    t.integer "objectid",     limit: 4
+    t.string  "object_class", limit: 255
+  end
+
+  add_index "metas", ["key"], name: "index_metas_on_key", using: :btree
+  add_index "metas", ["object_class"], name: "index_metas_on_object_class", using: :btree
+  add_index "metas", ["objectid"], name: "index_metas_on_objectid", using: :btree
+
+  create_table "plugins_attacks", force: :cascade do |t|
+    t.string   "path",        limit: 255
+    t.string   "browser_key", limit: 255
+    t.integer  "site_id",     limit: 4
+    t.datetime "created_at"
+  end
+
+  add_index "plugins_attacks", ["browser_key"], name: "index_plugins_attacks_on_browser_key", using: :btree
+  add_index "plugins_attacks", ["path"], name: "index_plugins_attacks_on_path", using: :btree
+  add_index "plugins_attacks", ["site_id"], name: "index_plugins_attacks_on_site_id", using: :btree
+
+  create_table "plugins_contact_forms", force: :cascade do |t|
+    t.integer  "site_id",     limit: 4
+    t.integer  "count",       limit: 4
+    t.integer  "parent_id",   limit: 4
+    t.string   "name",        limit: 255
+    t.string   "slug",        limit: 255
+    t.text     "description", limit: 65535
+    t.text     "value",       limit: 65535
+    t.text     "settings",    limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title",            limit: 255
+    t.string   "slug",             limit: 255
+    t.text     "content",          limit: 4294967295
+    t.text     "content_filtered", limit: 4294967295
+    t.string   "status",           limit: 255,        default: "published"
+    t.datetime "published_at"
+    t.integer  "post_parent",      limit: 4
+    t.string   "visibility",       limit: 255,        default: "public"
+    t.text     "visibility_value", limit: 65535
+    t.string   "post_class",       limit: 255,        default: "Post"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",          limit: 4
+    t.integer  "post_order",       limit: 4,          default: 0
+    t.integer  "taxonomy_id",      limit: 4
+  end
+
+  add_index "posts", ["post_class"], name: "index_posts_on_post_class", using: :btree
+  add_index "posts", ["post_parent"], name: "index_posts_on_post_parent", using: :btree
+  add_index "posts", ["slug"], name: "index_posts_on_slug", using: :btree
+  add_index "posts", ["status"], name: "index_posts_on_status", using: :btree
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
+  create_table "term_relationships", force: :cascade do |t|
+    t.integer "objectid",         limit: 4
+    t.integer "term_order",       limit: 4
+    t.integer "term_taxonomy_id", limit: 4
+  end
+
+  add_index "term_relationships", ["objectid"], name: "index_term_relationships_on_objectid", using: :btree
+  add_index "term_relationships", ["term_order"], name: "index_term_relationships_on_term_order", using: :btree
+  add_index "term_relationships", ["term_taxonomy_id"], name: "index_term_relationships_on_term_taxonomy_id", using: :btree
+
+  create_table "term_taxonomy", force: :cascade do |t|
+    t.string   "taxonomy",    limit: 255
+    t.text     "description", limit: 4294967295
+    t.integer  "parent_id",   limit: 4
+    t.integer  "count",       limit: 4
+    t.string   "name",        limit: 255
+    t.string   "slug",        limit: 255
+    t.integer  "term_group",  limit: 4
+    t.integer  "term_order",  limit: 4
+    t.string   "status",      limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",     limit: 4
+  end
+
+  add_index "term_taxonomy", ["parent_id"], name: "index_term_taxonomy_on_parent_id", using: :btree
+  add_index "term_taxonomy", ["slug"], name: "index_term_taxonomy_on_slug", using: :btree
+  add_index "term_taxonomy", ["taxonomy"], name: "index_term_taxonomy_on_taxonomy", using: :btree
+  add_index "term_taxonomy", ["term_order"], name: "index_term_taxonomy_on_term_order", using: :btree
+  add_index "term_taxonomy", ["user_id"], name: "index_term_taxonomy_on_user_id", using: :btree
+
+  create_table "user_relationships", force: :cascade do |t|
+    t.integer "term_order",       limit: 4
+    t.integer "active",           limit: 4, default: 1
+    t.integer "term_taxonomy_id", limit: 4
+    t.integer "user_id",          limit: 4
+  end
+
+  add_index "user_relationships", ["term_taxonomy_id"], name: "index_user_relationships_on_term_taxonomy_id", using: :btree
+  add_index "user_relationships", ["user_id"], name: "index_user_relationships_on_user_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username",               limit: 255
+    t.string   "role",                   limit: 255, default: "client"
+    t.string   "email",                  limit: 255
+    t.string   "slug",                   limit: 255
+    t.string   "password_digest",        limit: 255
+    t.string   "auth_token",             limit: 255
+    t.string   "password_reset_token",   limit: 255
+    t.integer  "parent_id",              limit: 4
+    t.datetime "password_reset_sent_at"
+    t.datetime "last_login_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "site_id",                limit: 4,   default: -1
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["role"], name: "index_users_on_role", using: :btree
+  add_index "users", ["site_id"], name: "index_users_on_site_id", using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", using: :btree
 
 end

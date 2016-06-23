@@ -184,11 +184,30 @@ it:
     extra_attributes: "Attributi extra"
 
   camaleon_cms:
+    see_intro: "Vedi introduzione"
     admin:
       button:
         search: Cerca
       sidebar:
         contents: 'Contenuti'
+      intro:
+        appearance: 'Modifica temi, widget e menù'
+        comments: 'I commenti ai tuoi post'
+        content: 'In questa sezione puoi modificare i contenuti del tuo sito'
+        custom_fields: 'Gestisci i tuoi campi personalizzati'
+        gral_site: 'Impostazioni generali'
+        languages: 'Lingue'
+        media: 'Gestisci facilmente di tuoi contenuti multimediali'
+        menus: 'Crea e gestisci al meglio le voci di menù'
+        plugins: 'Installa e tieni sotto controllo i plugin presenti nel tuo sito'
+        post_type: 'Gestisci gruppi di contenuto'
+        profile: 'Profilo'
+        settings: 'Impostazioni del tuo sito'
+        shortcodes: 'Shortcodes'
+        sites: 'Impostazioni sui siti'
+        themes: "Se nel tuo sito è presente un tema custom, ti consigliamo di rivolgerti al tuo team di sviluppo per le modifiche di questa sezione"
+        users: 'In questa sezione puoi gestire gli utenti del sito e assegnare loro ruoli o particolari privilegi'
+        widgets: 'Gestisci facilmente i tuoi widget'
 
 
   will_paginate:
